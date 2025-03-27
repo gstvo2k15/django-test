@@ -1,0 +1,4 @@
+Django>=4.2
+django-adminlte3
+requests
+psycopg2-binary
