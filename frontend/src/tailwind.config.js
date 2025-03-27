@@ -1,3 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+module.exports = {
+    content: [
+      "./index.html",
+      "./src/**/*.{vue,js,ts,jsx,tsx}"
+    ],
+    theme: {
+      extend: {},
+    },
+    plugins: [],
+  }
+  
