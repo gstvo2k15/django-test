@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from .models import PatchingStatus
 
 def dashboard(request):
-    return render(request, 'patching/dashboard.html')
+    patches = PatchingStatus.objects.select_related('middleware', 'middleware__server')
+    return render(request, 'patching/dashboard.html', {'patches': patches})

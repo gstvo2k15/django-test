@@ -1,5 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Middleware Dashboard</h1>
-<p>Esta es la vista inicial del panel de parches.</p>
+<h1>Patching Dashboard</h1>
+<table>
+  <tr>
+    <th>Servidor</th><th>Middleware</th><th>Estado</th>
+  </tr>
+  {% for item in patches %}
+  <tr>
+    <td>{{ item.middleware.server.hostname }}</td>
+    <td>{{ item.middleware.get_type_display }}</td>
+    <td>{{ item.get_status_display }}</td>
+  </tr>
+  {% endfor %}
+</table>
 {% endblock %}

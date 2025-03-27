@@ -1,34 +1,20 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Dashboard{% endblock %}</title>
-    {% load static %}
-
-    <!-- AdminLTE -->
-    <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
-    <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
-    <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}">
-
-    {% block extra_css %}{% endblock %}
+  <meta charset="UTF-8">
+  <title>{% block title %}Dashboard{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
-    <div class="wrapper">
-
-        <!-- Main Content -->
-        <div class="content-wrapper p-4">
-            {% block content %}{% endblock %}
-        </div>
-
+  <div class="wrapper">
+    <div class="content-wrapper p-4">
+      {% block content %}{% endblock %}
     </div>
-
-    <!-- Scripts -->
-    <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js' %}"></script>
-    <script src="{% static 'dist/js/adminlte.min.js' %}"></script>
-
-    {% block extra_js %}{% endblock %}
+  </div>
+  <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'dist/js/adminlte.min.js' %}"></script>
 </body>
 </html>
