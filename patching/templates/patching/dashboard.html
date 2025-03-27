@@ -1,16 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Patching Dashboard</h1>
-<table>
-  <tr>
-    <th>Servidor</th><th>Middleware</th><th>Estado</th>
-  </tr>
-  {% for item in patches %}
-  <tr>
-    <td>{{ item.middleware.server.hostname }}</td>
-    <td>{{ item.middleware.get_type_display }}</td>
-    <td>{{ item.get_status_display }}</td>
-  </tr>
-  {% endfor %}
-</table>
+<div class="content-header">
+  <div class="container-fluid">
+    <h1 class="m-0 text-dark">Patching Dashboard</h1>
+  </div>
+</div>
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      {% for mw, count in middlewares.items %}
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-info">
+          <div class="inner">
+            <h3>{{ count }}</h3>
+            <p>{{ mw }}</p>
+          </div>
+          <div class="icon">
+            <i class="fas fa-server"></i>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
 {% endblock %}
