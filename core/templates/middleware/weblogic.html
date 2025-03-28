@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="mb-4">Pending Patches - WebLogic</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Host</th>
+      <th>Version</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for patch in patches %}
+    <tr>
+      <td>{{ patch.host }}</td>
+      <td>{{ patch.version }}</td>
+      <td>
+        {% if not patch.applied %}
+          <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="patch_id" value="{{ patch.id }}">
+            <button class="btn btn-sm btn-primary">Ejecutar parches</button>
+          </form>
+        {% else %}
+          <span class="badge badge-success">Aplicado</span>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Middleware Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
@@ -9,14 +9,30 @@
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
+  <!-- Sidebar -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <a href="/" class="brand-link">
+      <span class="brand-text font-weight-light ml-2">Middleware</span>
+    </a>
+    <div class="sidebar">
+      <nav>
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview">
+          <li class="nav-item"><a href="/" class="nav-link">Dashboard</a></li>
+          <li class="nav-item"><a href="/middleware/apache/" class="nav-link">Apache</a></li>
+          <li class="nav-item"><a href="/middleware/nginx/" class="nav-link">Nginx</a></li>
+          <li class="nav-item"><a href="/middleware/tomcat/" class="nav-link">Tomcat</a></li>
+          <li class="nav-item"><a href="/middleware/jboss/" class="nav-link">JBoss</a></li>
+          <li class="nav-item"><a href="/middleware/weblogic/" class="nav-link">WebLogic</a></li>
+          <li class="nav-item"><a href="/middleware/websphere/" class="nav-link">WAS</a></li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
 
-  {% include 'partials/navbar.html' %}
-  {% include 'partials/sidebar.html' %}
-
+  <!-- Content -->
   <div class="content-wrapper p-4">
     {% block content %}{% endblock %}
   </div>
-
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
