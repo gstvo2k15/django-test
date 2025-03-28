@@ -32,7 +32,9 @@ services:
       - "6379:6379"
 
   worker:
-    build: ./backend
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
     container_name: celery-worker
     command: celery -A config.celery worker --loglevel=info
     volumes:
