@@ -12,11 +12,18 @@ MIDDLEWARES = [
 ]
 
 def dashboard(request):
-    stats = []
-    for mw in MIDDLEWARES:
-        count = PatchResult.objects.filter(middleware__iexact=mw["slug"], applied=False).count()
-        stats.append({**mw, "count": count})
-    return render(request, "dashboard.html", {"middlewares": stats})
+    middlewares = [
+        {"name": "Apache", "slug": "apache", "color": "bg-danger", "icon": "fas fa-fire"},
+        {"name": "Nginx", "slug": "nginx", "color": "bg-success", "icon": "fas fa-leaf"},
+        {"name": "Tomcat", "slug": "tomcat", "color": "bg-warning", "icon": "fas fa-cat"},
+        {"name": "JBoss", "slug": "jboss", "color": "bg-primary", "icon": "fas fa-rocket"},
+        {"name": "WebLogic", "slug": "weblogic", "color": "bg-purple", "icon": "fas fa-brain"},
+        {"name": "WAS", "slug": "was", "color": "bg-teal", "icon": "fas fa-cogs"},
+    ]
+    for mw in middlewares:
+        mw["count"] = 0  # temporalmente, luego se conectará a Tower
+
+    return render(request, "dashboard.html", {"middlewares": middlewares})
 
 @csrf_exempt  # Solo para pruebas, en prod gestiona bien el CSRF
 def middleware_detail(request, slug):
