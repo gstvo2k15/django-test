@@ -19,33 +19,25 @@
     {% endfor %}
   </div>
 
-  <!-- Chart Section -->
   <div class="row mt-4">
     <div class="col-md-6">
       <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Pending Patches Over Time</h3>
-        </div>
-        <div class="card-body">
-          <canvas id="patchesLineChart" height="200"></canvas>
-        </div>
+        <div class="card-header"><h3 class="card-title">Pending Patches Over Time</h3></div>
+        <div class="card-body"><canvas id="patchesLineChart" height="200"></canvas></div>
       </div>
     </div>
 
     <div class="col-md-6">
       <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Middleware Breakdown</h3>
-        </div>
-        <div class="card-body">
-          <canvas id="patchesBarChart" height="200"></canvas>
-        </div>
+        <div class="card-header"><h3 class="card-title">Middleware Breakdown</h3></div>
+        <div class="card-body"><canvas id="patchesBarChart" height="200"></canvas></div>
       </div>
     </div>
   </div>
 </div>
+{% endblock %}
 
-<!-- Charts Script -->
+{% block scripts %}
 <script>
   const ctxLine = document.getElementById('patchesLineChart').getContext('2d');
   const ctxBar = document.getElementById('patchesBarChart').getContext('2d');
@@ -67,9 +59,7 @@
     options: {
       responsive: true,
       scales: {
-        y: {
-          beginAtZero: true
-        }
+        y: { beginAtZero: true }
       }
     }
   });
@@ -90,9 +80,7 @@
     options: {
       responsive: true,
       scales: {
-        y: {
-          beginAtZero: true
-        }
+        y: { beginAtZero: true }
       }
     }
   });
