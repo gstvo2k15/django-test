@@ -1,5 +1,6 @@
 Django>=4.2
 djangorestframework
+django-adminlte3==0.1.6
 psycopg2-binary
 celery
 redis

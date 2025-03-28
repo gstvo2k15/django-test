@@ -10,6 +10,8 @@ ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'adminlte3',
+    'adminlte3_theme',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -67,3 +69,6 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+ADMINLTE_SITE_TITLE = "Middleware Dashboard"
+ADMINLTE_SITE_HEADER = "Middleware Dashboard Admin"

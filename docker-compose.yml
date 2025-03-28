@@ -4,7 +4,7 @@ services:
     container_name: django-backend
     command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
-      - ./backend/src:/app
+      - ./core:/app/core
     env_file:
       - .env
     ports:
@@ -34,7 +34,7 @@ services:
     container_name: celery-worker
     command: celery -A config worker --loglevel=info
     volumes:
-      - ./backend/src:/app
+      - ./core:/app/core
     env_file:
       - .env
     depends_on:
