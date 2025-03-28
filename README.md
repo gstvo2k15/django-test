@@ -9,8 +9,19 @@ docker compose exec backend python manage.py migrate
 
 ## Access
 
-`export IP4=$(ip -4 -o addr show scope global | awk '{print $4}' | cut -d/ -f1 | grep -v 172)`
 
-1. **Main project: `http://${IP4}:8000/`
+1. **Main project**: 
 
-2. **Django Adminlte: `http://${IP4}:8000/admin`
+```bash
+    export IP4=$(ip -4 -o addr show scope global | awk '{print $4}' | cut -d/ -f1 | grep -v 172)`
+
+    http://${IP4}:8000/
+```
+
+    
+2. **Django Adminlte**: 
+
+```bash
+    docker compose exec -it backend python manage.py createsuperuser
+    http://${IP4}:8000/admin
+```
