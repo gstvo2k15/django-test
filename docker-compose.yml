@@ -1,8 +1,6 @@
 services:
   backend:
-    build:
-      context: .
-      dockerfile: backend/Dockerfile
+    build: ./backend
     container_name: django-backend
     command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
@@ -31,13 +29,11 @@ services:
     ports:
       - "6379:6379"
 
-  worker:
-    build: ./backend
-    container_name: celery-worker
+  redis-insight:
+    image: redislabs/rme: celery-worker
     command: celery -A config worker --loglevel=info
     volumes:
-      - ./core:/app/core
-    env_file:
+      - ./backend./core:/app/core_file:
       - .env
     depends_on:
       - backend
