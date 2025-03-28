@@ -29,11 +29,13 @@ services:
     ports:
       - "6379:6379"
 
-  redis-insight:
-    image: redislabs/rme: celery-worker
+  worker:
+    build: ./backend
+    container_name: celery-worker
     command: celery -A config worker --loglevel=info
     volumes:
-      - ./backend./core:/app/core_file:
+      - ./core:/app/core
+    env_file:
       - .env
     depends_on:
       - backend
