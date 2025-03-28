@@ -13,12 +13,12 @@ MIDDLEWARES = [
 
 def dashboard(request):
     middlewares = [
-        {"name": "Apache", "slug": "apache", "color": "bg-danger", "icon": "fas fa-fire"},
-        {"name": "Nginx", "slug": "nginx", "color": "bg-success", "icon": "fas fa-leaf"},
-        {"name": "Tomcat", "slug": "tomcat", "color": "bg-warning", "icon": "fas fa-cat"},
-        {"name": "JBoss", "slug": "jboss", "color": "bg-primary", "icon": "fas fa-rocket"},
-        {"name": "WebLogic", "slug": "weblogic", "color": "bg-purple", "icon": "fas fa-brain"},
-        {"name": "WAS", "slug": "was", "color": "bg-teal", "icon": "fas fa-cogs"},
+        {"name": "Apache", "slug": "apache", "count": 3, "color": "bg-danger", "icon": "fas fa-fire"},
+        {"name": "Nginx", "slug": "nginx", "count": 2, "color": "bg-success", "icon": "fas fa-leaf"},
+        {"name": "Tomcat", "slug": "tomcat", "count": 1, "color": "bg-warning", "icon": "fas fa-cat"},
+        {"name": "JBoss", "slug": "jboss", "count": 4, "color": "bg-primary", "icon": "fas fa-rocket"},
+        {"name": "WebLogic", "slug": "weblogic", "count": 2, "color": "bg-purple", "icon": "fas fa-brain"},
+        {"name": "WAS", "slug": "websphere", "count": 3, "color": "bg-teal", "icon": "fas fa-cogs"},
     ]
     for mw in middlewares:
         mw["count"] = 0  # temporalmente, luego se conectará a Tower
