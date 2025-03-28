@@ -13,14 +13,6 @@ services:
       - db
       - redis
 
-  frontend:
-    build: ./frontend
-    container_name: vue-frontend
-    ports:
-      - "3000:80"
-    depends_on:
-      - backend
-
   db:
     image: postgres:14
     container_name: postgres-db
