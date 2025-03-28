@@ -1,10 +1,10 @@
 services:
   backend:
-    build: ./backend
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
     container_name: django-backend
     command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
-    volumes:
-      - ./backend/src:/app
     env_file:
       - .env
     ports:
@@ -13,13 +13,18 @@ services:
       - db
       - redis
 
-  frontend:
-    build: ./frontend
-    container_name: vue-frontend
-    ports:
-      - "3000:80"
+  worker:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: celery-worker
+    command: celery -A config.celery worker --loglevel=info
+    env_file:
+      - .env
     depends_on:
       - backend
+      - redis
+      - db
 
   db:
     image: postgres:14
@@ -36,19 +41,6 @@ services:
     container_name: redis
     ports:
       - "6379:6379"
-
-  worker:
-    build: ./backend
-    container_name: celery-worker
-    command: celery -A config worker --loglevel=info
-    volumes:
-      - ./backend/src:/app
-    env_file:
-      - .env
-    depends_on:
-      - backend
-      - redis
-      - db
 
 volumes:
   pgdata:

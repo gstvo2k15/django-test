@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    {% for mw in middlewares %}
+    <div class="col-md-4 col-sm-6">
+      <div class="small-box {{ mw.color }}">
+        <div class="inner">
+          <h3>{{ mw.count }}</h3>
+          <p>{{ mw.name }}</p>
+        </div>
+        <div class="icon"><i class="{{ mw.icon }}"></i></div>
+        <a href="{% url 'core:middleware_detail' mw.slug %}" class="small-box-footer">
+          View <i class="fas fa-arrow-circle-right"></i>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header"><h3 class="card-title">Pending Patches Over Time</h3></div>
+        <div class="card-body"><canvas id="patchesLineChart" height="200"></canvas></div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header"><h3 class="card-title">Middleware Breakdown</h3></div>
+        <div class="card-body"><canvas id="patchesBarChart" height="200"></canvas></div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const ctxLine = document.getElementById('patchesLineChart').getContext('2d');
+  const ctxBar = document.getElementById('patchesBarChart').getContext('2d');
+
+  new Chart(ctxLine, {
+    type: 'line',
+    data: {
+      labels: ['Day 1', 'Day 5', 'Day 10', 'Day 15', 'Day 20', 'Day 25', 'Day 30'],
+      datasets: [{
+        label: 'Total Pending Patches',
+        data: [12, 10, 8, 7, 5, 2, 1],
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: '#36A2EB',
+        borderWidth: 2,
+        fill: true,
+        tension: 0.3
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+
+  new Chart(ctxBar, {
+    type: 'bar',
+    data: {
+      labels: ['Apache', 'Nginx', 'Tomcat', 'JBoss', 'WebLogic', 'WAS'],
+      datasets: [{
+        label: 'Current Pending Patches',
+        data: [3, 4, 2, 6, 1, 5],
+        backgroundColor: [
+          '#DC3545', '#28A745', '#FFC107', '#007BFF', '#6F42C1', '#20C997'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+</script>
+{% endblock %}
