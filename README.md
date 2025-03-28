@@ -1,2 +1,3 @@
-# django-test
-A simple repo for learn django.
+# Middleware Dashboard
+
+Stack profesional para gestión de parches vía Ansible Tower.
