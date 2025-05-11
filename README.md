@@ -25,3 +25,6 @@ docker compose exec backend python manage.py migrate
     docker compose exec -it backend python manage.py createsuperuser
     http://${IP4}:8000/admin
 ```
+
+3. **Example of finished project**:
+![alt text](django-dashboard-1.png)
